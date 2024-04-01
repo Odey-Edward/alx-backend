@@ -47,9 +47,9 @@ class Server:
     def get_hyper(self, page=1, page_size=10):
         """Implement Hypermedia pagination"""
         hyper = {}
-        hyper['data'] = self.get_page(page, page_size)
         hyper['page_size'] = page_size
         hyper['page'] = page
+        hyper['data'] = self.get_page(page, page_size)
 
         data_set = self.dataset()
 
