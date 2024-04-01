@@ -43,10 +43,3 @@ class Server:
         data_set = self.dataset()
 
         return data_set[page_index[0]:page_index[1]]
-
-
-
-
-
-
-
