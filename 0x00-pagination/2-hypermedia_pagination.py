@@ -65,6 +65,6 @@ class Server:
         else:
             hyper['prev_page'] = None
 
-        hyper['total_pages'] = int(total_page)
+        hyper['total_pages'] = math.ceil(total_page)
 
         return hyper
