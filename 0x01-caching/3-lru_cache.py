@@ -15,7 +15,7 @@ class LRUCache(BaseCaching):
 
     def __get_key_by_value(self, d, value):
         """get key from a dict by value"""
-        for key, val in sorted(d.items()):
+        for key, val in d.items():
             if val == value:
                 return key
 
