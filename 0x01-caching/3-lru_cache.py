@@ -41,8 +41,8 @@ class LRUCache(BaseCaching):
                 self.__usage_tracker[key] = value + 1
                 self.cache_data[key] = item
 
-                #if key != k:
-                print('DISCARD: {}'.format(k))
+                if key != k:
+                    print('DISCARD: {}'.format(k))
 
     def get(self, key):
         """retrive item from the cache storage"""
