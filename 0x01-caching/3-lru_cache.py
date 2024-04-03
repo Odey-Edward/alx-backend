@@ -6,7 +6,7 @@ from base_caching import BaseCaching
 
 class LRUCache(BaseCaching):
     """LRUCache Class that implement the LRU cache
-    replacement policies"""
+    replacement policy"""
 
     def __init__(self):
         """LRUCache class initialization method"""
@@ -33,16 +33,16 @@ class LRUCache(BaseCaching):
             else:
                 value = min(self.__usage_tracker.values())
 
-                k = self.__get_key_by_value(self.__usage_tracker, value)
-                del self.cache_data[k]
-                del self.__usage_tracker[k]
+                if key not in self.cache_data:
+                    k = self.__get_key_by_value(self.__usage_tracker, value)
+                    del self.cache_data[k]
+                    del self.__usage_tracker[k]
+
+                    print('DISCARD: {}'.format(k))
 
                 value = max(self.__usage_tracker.values())
                 self.__usage_tracker[key] = value + 1
                 self.cache_data[key] = item
-
-                if key != k:
-                    print('DISCARD: {}'.format(k))
 
     def get(self, key):
         """retrive item from the cache storage"""
