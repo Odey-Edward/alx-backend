@@ -14,13 +14,6 @@ class LRUCache(BaseCaching):
         self.__usage_tracker = {}
         self.__usage_counter = 0
 
-    def __get_key_by_value(self, d, value):
-        """get key from a dict by value"""
-        for key, val in d.items():
-            if val == value:
-                return key
-        return None
-
     def put(self, key, item):
         """insert item to the cache storage"""
         if key and item:
