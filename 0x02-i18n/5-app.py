@@ -25,9 +25,8 @@ users = {
 }
 
 
-def get_user():
+def get_user(user_id):
     """retrive a user data"""
-    user_id = request.args.get('login_as')
     if user_id is not None:
         user = users.get(int(user_id))
         if user is not None:
@@ -38,7 +37,7 @@ def get_user():
 @app.before_request
 def before_request():
     """method execute before every request"""
-    g.user = get_user()
+    g.user = get_user(request.args.get("login_as"))
 
 
 @babel.localeselector
