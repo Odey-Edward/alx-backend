@@ -27,7 +27,7 @@ users = {
 
 def get_user(user_id):
     """retrive a user data"""
-    if user_id is not None:
+    if user_id:
         user = users.get(int(user_id))
         if user is not None:
             return user
