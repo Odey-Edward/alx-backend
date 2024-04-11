@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """Flask App Module"""
 
-from flask import Flask, render_template, request
-from flask import g
+from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
 
@@ -25,13 +24,14 @@ users = {
 }
 
 
-def get_user(user_id):
-    """retrive a user data"""
-    if user_id:
-        user = users.get(int(user_id))
-        if user is not None:
-            return user
-    return None
+def get_user(login_as):
+    """
+    get_user.
+    """
+    try:
+        return users.get(int(login_as))
+    except Exception:
+        return
 
 
 @app.before_request
