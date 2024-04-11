@@ -51,7 +51,7 @@ def get_locale():
     return request.accept_languages.best_match(Config.LANGUAGES)
 
 
-@app.route('/')
+@app.route('/', strict_slashes=False)
 def index():
     """render index.html file"""
 
@@ -59,4 +59,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port="5000", host='0.0.0.0', debug=True)
