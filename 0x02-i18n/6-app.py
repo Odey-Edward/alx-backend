@@ -48,7 +48,15 @@ def get_locale():
         if locale in Config.LANGUAGES:
             return locale
 
-    return request.accept_languages.best_match(Config.LANGUAGES)
+    user = get_user(request.args.get('login_as'))
+
+    if user and user.get('locale'):
+        return user['locale']
+
+    if request.accept_languages.best_match(Config.LANGUAGES):
+        return request.accept_languages.best_match(Config.LANGUAGES)
+
+    return Config.BABEL_DEFAULT_LOCALE
 
 
 @app.route('/')
